@@ -701,3 +701,124 @@ table.data tr:nth-child(even) td { background: var(--cream); }
 .small-note { font-size: .8rem; color: var(--muted); }
 .small-note a { color: var(--accent); text-decoration: underline; }
 .tbd-chip { background: var(--cream-2); color: var(--muted); font-size: .72rem; font-weight: 700; border-radius: 999px; padding: .15rem .6rem; display: inline-block; }
+
+/* ==========================================================================
+   Developer Spotlight — Rahat Ahmed (RahatVerse)
+   ========================================================================== */
+.dev-section { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+.dev-card {
+  position: relative; overflow: hidden;
+  background: linear-gradient(125deg, #251b15 0%, #17110d 60%, #1d1410 100%);
+  color: #f2ece2; border-radius: calc(var(--radius) + 8px);
+  padding: clamp(2rem, 4.5vw, 3.4rem);
+  display: grid; grid-template-columns: 290px 1fr;
+  gap: clamp(1.8rem, 4vw, 3.4rem); align-items: center;
+  box-shadow: 0 30px 70px -25px rgba(27, 23, 19, .45);
+}
+.dev-card::before {
+  content: ""; position: absolute; right: -90px; bottom: -90px; width: 300px; height: 300px;
+  border: 44px solid rgba(185, 138, 47, .12); border-radius: 50%; pointer-events: none;
+}
+.dev-card::after {
+  content: ""; position: absolute; left: -40px; top: -40px; width: 170px; height: 170px;
+  border: 26px solid rgba(140, 35, 50, .35); border-radius: 50%; pointer-events: none;
+}
+.dev-photo { position: relative; z-index: 1; justify-self: center; }
+.dev-photo img {
+  width: 100%; max-width: 290px; aspect-ratio: 1; object-fit: cover;
+  border-radius: calc(var(--radius) + 4px); border: 3px solid rgba(201, 161, 59, .85);
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, .6);
+  transition: transform .35s ease;
+}
+.dev-card:hover .dev-photo img { transform: scale(1.025) rotate(-.6deg); }
+.dev-ribbon {
+  position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+  background: var(--gold); color: #221703; font-size: .68rem; font-weight: 800;
+  letter-spacing: .16em; text-transform: uppercase; padding: .38rem .95rem; border-radius: 999px;
+  box-shadow: 0 8px 20px -6px rgba(185, 138, 47, .7); white-space: nowrap;
+}
+.dev-available {
+  position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: .4rem;
+  background: rgba(23, 17, 13, .82); backdrop-filter: blur(4px); color: #8be0a6;
+  font-size: .68rem; font-weight: 700; padding: .32rem .75rem; border-radius: 999px;
+  border: 1px solid rgba(139, 224, 166, .35);
+}
+.dev-available .dot { width: 7px; height: 7px; border-radius: 50%; background: #43d17c; animation: pulse 1.6s infinite; }
+.dev-info { position: relative; z-index: 1; }
+.dev-overline { color: #e5b95c; }
+.dev-overline::before { background: #e5b95c; }
+.dev-name { color: #fff; font-size: clamp(1.7rem, 3.4vw, 2.5rem); margin: .55rem 0 .15rem; display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; }
+.dev-name .dev-bn { font-family: var(--font-bn); font-size: .62em; color: #e5c184; font-weight: 600; }
+.dev-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin: .9rem 0 1.05rem; }
+.dev-chips span {
+  display: inline-flex; align-items: center; gap: .4rem; font-size: .78rem; font-weight: 600;
+  color: #f4e7cf; background: rgba(201, 161, 59, .14); border: 1px solid rgba(201, 161, 59, .35);
+  padding: .4rem .9rem; border-radius: 999px; transition: background .2s, transform .2s;
+}
+.dev-chips span:hover { background: rgba(201, 161, 59, .28); transform: translateY(-2px); }
+.dev-desc { color: #cfc6b8; font-size: .96rem; max-width: 40rem; }
+.dev-quote {
+  font-family: var(--font-display); font-style: italic; font-size: 1.06rem; color: #efe2c6;
+  border-left: 3px solid var(--gold); padding-left: 1rem; margin: 1.15rem 0 1.4rem;
+}
+body.bn .dev-quote { font-family: var(--font-bn); font-style: normal; }
+.dev-btns { display: flex; gap: .8rem; flex-wrap: wrap; }
+.dev-btn-outline { border-color: rgba(255, 255, 255, .45); color: #fff; }
+.dev-btn-outline:hover { background: rgba(255, 255, 255, .12); border-color: #fff; color: #fff; }
+.dev-meta { margin-top: 1.15rem; color: #9a9184; font-size: .8rem; display: flex; align-items: center; gap: .45rem; flex-wrap: wrap; }
+.dev-meta svg { width: 14px; height: 14px; color: #e5b95c; }
+@media (max-width: 860px) {
+  .dev-card { grid-template-columns: 1fr; text-align: center; }
+  .dev-info { display: flex; flex-direction: column; align-items: center; }
+  .dev-quote { border-left: none; border-top: 3px solid var(--gold); padding: .9rem 0 0; }
+  .dev-chips, .dev-btns { justify-content: center; }
+  .dev-overline::before { display: none; }
+}
+
+/* ==========================================================================
+   Polish pack — animations, consistency, a11y
+   ========================================================================== */
+
+/* Hero entrance */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+.hero-copy > * { animation: fadeUp .7s ease both; }
+.hero-copy > .hero-badge { animation-delay: 0s; }
+.hero-copy > h1 { animation-delay: .08s; }
+.hero-copy > .hero-tagline { animation-delay: .16s; }
+.hero-copy > .hero-sub { animation-delay: .24s; }
+.hero-copy > .hero-cta { animation-delay: .32s; }
+.hero-copy > .hero-trust { animation-delay: .40s; }
+.hero-media { animation: fadeUp .8s .18s ease both; }
+
+/* Button shine sweep */
+.btn-primary, .btn-whatsapp { position: relative; overflow: hidden; }
+.btn-primary::after, .btn-whatsapp::after {
+  content: ""; position: absolute; top: 0; left: -90%; width: 45%; height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, .32), transparent);
+  transform: skewX(-20deg); transition: left .55s ease; pointer-events: none;
+}
+.btn-primary:hover::after, .btn-whatsapp:hover::after { left: 135%; }
+
+/* Card icon micro-motion */
+.feat-card .f-icon, .info-card .i-icon, .loc-row .l-icon { transition: transform .25s ease, background .25s ease; }
+.feat-card:hover .f-icon, .info-card:hover .i-icon, .loc-row:hover .l-icon { transform: rotate(-7deg) scale(1.07); }
+
+/* Accordion content fade-in */
+details.acc[open] .acc-body { animation: fadeUp .35s ease; }
+
+/* Consistent card heights */
+.feat-card, .info-card, .review-card, .stat, .loc-card { height: 100%; }
+.feat-card, .info-card { display: flex; flex-direction: column; }
+
+/* Focus visibility */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px;
+}
+
+/* Anchor offset under sticky header */
+section[id], div[id="shop-grid"] { scroll-margin-top: calc(var(--header-h) + 18px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy > *, .hero-media { animation: none; }
+  .btn-primary::after, .btn-whatsapp::after { display: none; }
+}

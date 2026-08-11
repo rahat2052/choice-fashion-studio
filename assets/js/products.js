@@ -230,7 +230,7 @@ const PRODUCTS = [
     colors: ["Mint", "Dusty Rose"],
     sizes: ["S", "M", "L", "XL"],
     img: "assets/img/products/kurti.svg",
-    material: " breathable printed cotton",
+    material: "Breathable printed cotton",
     badge: null,
     desc: "Cheerful everyday kurti in soft breathable cotton — easy to pair with leggings, jeans or salwar.",
     care: "Machine wash cold."
