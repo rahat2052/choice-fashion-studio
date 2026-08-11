@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop the Collection | Choice Fashion Studio Sunamganj</title>
+<meta name="description" content="Browse the full collection at Choice Fashion Studio Sunamganj — men's panjabi, shirts and jeans, women's saree, three-piece and kurti, kids wear and accessories.">
+<meta name="developer" content="Rahat Ahmed — https://www.rahatahmed.site/en">
+<link rel="canonical" href="https://choice-fashion-studio.vercel.app/shop">
+<meta name="theme-color" content="#8c2332">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="shop">
+
+<section class="page-hero">
+  <div class="container">
+    <nav class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><span>Shop</span></nav>
+    <h1 data-i18n="shop.title">The Collection</h1>
+    <p class="ph-sub" data-i18n="shop.sub">Browse our full range — filter by category, price, size or colour.</p>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="container">
+
+    <div class="demo-banner" id="demo-banner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8v.1"/></svg>
+      <span><b>Preview catalog:</b> products, photos and prices shown here are <b>samples</b> so you can see how the shop will look. The store's real collection arrives soon — <a href="tel:+8801618006268" style="text-decoration:underline"><b>call us</b></a> or WhatsApp to ask about actual stock.</span>
+    </div>
+
+    <div class="shop-toolbar">
+      <button class="btn btn-ghost btn-sm filter-toggle" id="filter-toggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M3 5h18l-7 8v5l-4 2v-7Z"/></svg>
+        <span data-i18n="shop.filters">Filters</span>
+      </button>
+      <div class="search-box" style="flex:1;min-width:200px;border-bottom-width:1.5px;padding-bottom:.45rem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:18px;height:18px"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="shop-search" type="text" placeholder="Search in collection…" style="font-size:1rem;font-family:var(--font-body)">
+      </div>
+      <span class="result-count" id="result-count"></span>
+      <select id="sort-select" aria-label="Sort products">
+        <option value="new" data-i18n="sort.new">Newest</option>
+        <option value="plh" data-i18n="sort.plh">Price: Low → High</option>
+        <option value="phl" data-i18n="sort.phl">Price: High → Low</option>
+        <option value="name" data-i18n="sort.name">Name A–Z</option>
+      </select>
+    </div>
+
+    <div class="shop-chips" id="shop-chips"></div>
+
+    <div class="shop-wrap">
+      <aside class="filter-panel" id="filter-panel">
+        <div class="filter-head">
+          <h3 data-i18n="shop.filters">Filters</h3>
+          <button class="icon-btn" data-close-filter aria-label="Close filters">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div class="filter-block">
+          <h4 data-i18n="filter.cat">Category</h4>
+          <div class="f-list" id="filter-cats"></div>
+        </div>
+        <div class="filter-block">
+          <h4 data-i18n="filter.price">Max price</h4>
+          <div class="price-range">
+            <input type="range" id="price-range" min="300" max="2500" step="50" value="2500">
+            <span class="pr-val" id="price-val">≤ ৳2,500</span>
+          </div>
+        </div>
+        <div class="filter-block">
+          <h4 data-i18n="filter.size">Size</h4>
+          <div class="f-list" id="filter-sizes" style="max-height:220px;overflow-y:auto"></div>
+        </div>
+        <button class="filter-clear" id="filter-clear" data-i18n="filter.clear">Clear all</button>
+        <button class="btn btn-primary" data-close-filter style="display:none" id="filter-apply">Show results</button>
+      </aside>
+
+      <div class="product-grid" id="shop-grid"></div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+/* show demo banner only while the catalog is in demo mode */
+if (!SITE.demoCatalog) { var b = document.getElementById('demo-banner'); if (b) b.style.display = 'none'; }
+/* mobile: turn apply button into a visible closer */
+if (window.matchMedia('(max-width: 900px)').matches) { document.getElementById('filter-apply').style.display = 'inline-flex'; }
+</script>
+</body>
+</html>

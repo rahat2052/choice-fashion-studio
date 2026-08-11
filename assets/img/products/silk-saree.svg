@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 400 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fae9e5"/>
+      <stop offset="1" stop-color="#f4d7cf"/>
+    </linearGradient>
+    <pattern id="weave" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="9" stroke="#b03030" stroke-opacity="0.05" stroke-width="1.4"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="500" fill="url(#bg)"/>
+  <rect width="400" height="500" fill="url(#weave)"/>
+  <circle cx="200" cy="218" r="118" fill="#ffffff" fill-opacity="0.42"/>
+  <circle cx="200" cy="218" r="118" fill="none" stroke="#b03030" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="3 6"/>
+  <g transform="translate(108,126) scale(7.66)" fill="none" stroke="#b03030" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 19.5C6.5 13 8.5 8 12 8c3.2 0 4.6 3 6.4 5.6 1.1 1.7 2 2.9 2.6 4"/><path d="M5 19.5c4.5 1.8 11.5 1.6 16-.1" stroke-width="1.4"/><path d="M6.4 18.4c.3-.6 1-.7 1.2-.1M9.6 18c.3-.6 1-.7 1.2-.1M12.8 17.6c.3-.6 1-.6 1.2 0M16 16.8c.3-.6 1-.6 1.2 0" stroke-width="0.9"/>
+  </g>
+  <text x="200" y="402" font-family="Georgia, serif" font-size="30" fill="#b03030" text-anchor="middle" font-weight="bold">Choice</text>
+  <text x="200" y="424" font-family="Arial, sans-serif" font-size="11.5" letter-spacing="4.5" fill="#b03030" fill-opacity="0.75" text-anchor="middle">FASHION STUDIO</text>
+  <text x="200" y="452" font-family="Arial, sans-serif" font-size="12" fill="#b03030" fill-opacity="0.9" text-anchor="middle">Silk Saree — studio photo coming soon</text>
+</svg>

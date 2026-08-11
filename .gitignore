@@ -1,0 +1,13 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Vercel local
+.vercel
+
+# Node (if tooling is added later)
+node_modules/
+dist/

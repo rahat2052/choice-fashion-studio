@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product | Choice Fashion Studio Sunamganj</title>
+<meta name="description" content="Product details — Choice Fashion Studio, Nil Akash Plaza, Priyangon Market, Sunamganj. Order by phone or WhatsApp: +880 1618-006268.">
+<meta name="developer" content="Rahat Ahmed — https://www.rahatahmed.site/en">
+<link rel="canonical" href="https://choice-fashion-studio.vercel.app/product">
+<meta name="theme-color" content="#8c2332">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="shop">
+
+<section class="page-hero" style="padding:1.4rem 0">
+  <div class="container">
+    <nav class="crumbs" style="margin-bottom:0"><a href="index.html">Home</a><span class="sep">/</span><a href="shop.html">Shop</a><span class="sep">/</span><span id="crumb-product">Product</span></nav>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="container" id="product-detail"><!-- rendered by main.js --></div>
+</section>
+
+<section class="section tight bg-cream">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="head-row">
+        <div>
+          <span class="overline">More Styles</span>
+          <h2 class="section-title" data-i18n="pd.related">You May Also Like</h2>
+        </div>
+        <a class="arrow-link" href="shop.html"><span data-i18n="shop.all">View All</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <div class="product-grid" id="related-grid"></div>
+  </div>
+</section>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+/* keep the breadcrumb in sync with the loaded product */
+document.addEventListener('DOMContentLoaded', function () {
+  var id = new URLSearchParams(location.search).get('id');
+  var p = typeof cfsFindProduct === 'function' ? cfsFindProduct(id) : null;
+  if (p) { var c = document.getElementById('crumb-product'); if (c) c.textContent = p.name; }
+});
+</script>
+</body>
+</html>
