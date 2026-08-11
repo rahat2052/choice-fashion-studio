@@ -496,7 +496,14 @@ let revealObserver = null;
 function observeReveals() {
   if (!revealObserver) {
     revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); revealObserver.unobserve(e.target); } });
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          /* release the stagger delay once revealed so later state changes stay instant */
+          setTimeout(() => { e.target.style.transitionDelay = ""; e.target.style.willChange = "auto"; }, 950);
+          revealObserver.unobserve(e.target);
+        }
+      });
     }, { threshold: 0.08 });
   }
   document.querySelectorAll(".reveal:not(.in)").forEach(el => {

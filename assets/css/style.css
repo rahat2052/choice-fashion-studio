@@ -822,3 +822,67 @@ section[id], div[id="shop-grid"] { scroll-margin-top: calc(var(--header-h) + 18p
   .hero-copy > *, .hero-media { animation: none; }
   .btn-primary::after, .btn-whatsapp::after { display: none; }
 }
+
+/* ==========================================================================
+   Smooth motion upgrade — premium easing, no stutter
+   ========================================================================== */
+:root { --ease-lux: cubic-bezier(.22, .61, .36, 1); }
+
+/* Reveal-on-scroll: softer curve + compositor-friendly */
+.reveal {
+  transition: opacity .78s var(--ease-lux), transform .78s var(--ease-lux);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+/* Hero entrance — single clean sweep (hero elements no longer use .reveal) */
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(30px); }
+  60%  { opacity: 1; }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-copy > * { animation: heroIn .9s var(--ease-lux) both; will-change: opacity, transform; }
+.hero-copy > .hero-badge { animation-delay: .05s; }
+.hero-copy > h1 { animation-delay: .14s; }
+.hero-copy > .hero-tagline { animation-delay: .23s; }
+.hero-copy > .hero-sub { animation-delay: .31s; }
+.hero-copy > .hero-cta { animation-delay: .39s; }
+.hero-copy > .hero-trust { animation-delay: .47s; }
+.hero-media { animation: heroIn 1s .22s var(--ease-lux) both; will-change: opacity, transform; }
+
+/* Gentle floating bob on the hero info cards */
+@keyframes floatY { from { transform: translateY(0); } to { transform: translateY(-7px); } }
+.hero-card.hc-rating { animation: floatY 5.4s ease-in-out 1.5s infinite alternate; }
+.hero-card.hc-hours  { animation: floatY 6.4s ease-in-out .7s infinite alternate-reverse; }
+
+/* Velvety zooms & lifts */
+.pc-media img, .cat-tile img { transition: transform .65s var(--ease-lux); will-change: transform; }
+.product-card { transition: transform .5s var(--ease-lux); }
+.product-card:hover { transform: translateY(-4px); }
+.cat-tile { transition: transform .45s var(--ease-lux), box-shadow .45s var(--ease-lux); }
+.feat-card, .info-card, .review-card { transition: transform .45s var(--ease-lux), box-shadow .45s var(--ease-lux); }
+.dev-photo img { transition: transform .55s var(--ease-lux); }
+
+/* Buttons & micro-interactions */
+.btn { transition: transform .3s var(--ease-lux), box-shadow .3s var(--ease-lux), background .25s ease, color .25s ease, border-color .25s ease; }
+.btn-primary::after, .btn-whatsapp::after { transition: left .72s var(--ease-lux); }
+.main-nav a::after { transition: width .28s var(--ease-lux); }
+.chip, .size-opt, .color-opt { transition: all .22s var(--ease-lux); }
+.icon-btn { transition: background .25s ease, color .25s ease, transform .25s var(--ease-lux); }
+.icon-btn:hover { transform: translateY(-1px); }
+
+/* Drawers & overlays — silkier open/close */
+.mobile-drawer, .cart-drawer { transition: transform .42s cubic-bezier(.32, .72, .24, 1); }
+.drawer-scrim { transition: opacity .32s ease; }
+.search-overlay { transition: opacity .28s ease; }
+.toast { animation: toastIn .3s var(--ease-lux); }
+
+/* Accordion polish */
+details.acc { transition: box-shadow .3s var(--ease-lux), border-color .3s ease; }
+details.acc[open] { box-shadow: var(--shadow-sm); border-color: #ddd3c4; }
+details.acc summary::after { transition: transform .28s var(--ease-lux); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-card.hc-rating, .hero-card.hc-hours { animation: none; }
+  .reveal { transition: none; }
+}
