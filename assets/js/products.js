@@ -232,7 +232,7 @@ const PRODUCTS = [
     img: "assets/img/products/kurti.svg",
     material: "Breathable printed cotton",
     badge: null,
-    desc: "Cheerful everyday kurti in soft breathable cotton — easy to pair with leggings, jeans or salwar.",
+    desc: "Cheerful everyday kurti in soft, breathable cotton — easy to pair with leggings, jeans or salwar.",
     care: "Machine wash cold."
   },
   {
