@@ -35,7 +35,19 @@ const ICONS = {
 function icon(name) { return ICONS[name] || ""; }
 const FALLBACK_IMG =
   "data:image/svg+xml," + encodeURIComponent(
-    `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='500'><rect width='100%' height='100%' fill='#f4efe7'/><text x='50%' y='47%' font-family='Georgia' font-size='26' fill='#8c2332' text-anchor='middle'>Choice</text><text x='50%' y='55%' font-family='Arial' font-size='11' letter-spacing='4' fill='#7d766c' text-anchor='middle'>FASHION STUDIO</text></svg>`);
+    `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='500'>
+       <defs>
+         <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+           <stop offset='0%' stop-color='#1a1812'/>
+           <stop offset='100%' stop-color='#0e0d0c'/>
+         </linearGradient>
+       </defs>
+       <rect width='100%' height='100%' fill='url(#g)'/>
+       <circle cx='50%' cy='42%' r='46' fill='none' stroke='#c9a24b' stroke-width='1.2' opacity='.55'/>
+       <text x='50%' y='47%' font-family='Georgia, serif' font-style='italic' font-size='30' fill='#e6c779' text-anchor='middle'>Choice</text>
+       <text x='50%' y='62%' font-family='Arial, sans-serif' font-size='10' letter-spacing='5' fill='#9a8d72' text-anchor='middle'>FASHION STUDIO</text>
+       <line x1='30%' y1='70%' x2='70%' y2='70%' stroke='#c9a24b' stroke-width='0.6' opacity='.45'/>
+     </svg>`);
 
 /* ---------------- i18n ---------------- */
 const I18N = {
