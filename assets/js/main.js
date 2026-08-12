@@ -88,14 +88,21 @@ const I18N = {
     "bar.home": "Home", "bar.shop": "Shop", "bar.call": "Call", "bar.wa": "WhatsApp", "bar.bag": "Bag",
     "form.name": "Your name", "form.phone": "Phone number", "form.msg": "Your message", "form.send": "Send via WhatsApp",
     "form.sent": "Opening WhatsApp — your message is ready to send!",
-    "common.viewProduct": "View Product", "common.from": "From", "common.sample": "Sample"
+    "common.viewProduct": "View Product", "common.from": "From", "common.sample": "Sample",
+    "dev.kicker": "Designed & Developed By",
+    "dev.chip1": "Web Developer", "dev.chip2": "Student & Teacher", "dev.chip3": "Blood Donor", "dev.chip4": "BNCC Cadet",
+    "dev.desc": "A web developer from Sunamganj, Bangladesh who loves building fast, beautiful and practical websites for local businesses — this store is one of them.",
+    "dev.quote": "\u201CStanding by people, learning, and teaching \u2014 these three things drive me forward.\u201D",
+    "dev.portfolio": "View My Portfolio",
+    "dev.order": "Order a Website",
+    "dev.meta": "Mobile-first \u00B7 SEO-ready \u00B7 100/100 performance-focused \u2014 like every RahatVerse build."
   },
   bn: {
     "nav.home": "হোম", "nav.shop": "কালেকশন", "nav.new": "নতুন আগমন", "nav.offers": "অফার",
     "nav.about": "আমাদের সম্পর্কে", "nav.contact": "যোগাযোগ", "nav.guide": "সাইজ গাইড", "nav.delivery": "ডেলিভারি তথ্য",
     "nav.faq": "সাধারণ প্রশ্ন", "nav.reviews": "রিভিউ",
     "header.call": "কল করুন",
-    "hero.kicker": "ক্লদিং স্টোর · প্রিয়াঙ্গন মার্কেট, সুনামগঞ্জ",
+    "hero.kicker": "ক্লোথিং স্টোর · প্রিয়াঙ্গন মার্কেট, সুনামগঞ্জ",
     "hero.title": "ফ্যাশন, যেন <em>আপনার জন্যই</em> তৈরি",
     "hero.sub": "চয়েস ফ্যাশন স্টুডিও নিয়ে এসেছে পুরুষ, নারী ও শিশুদের জন্য যত্নে বাছাই করা পোশাক — ইউনিক কালেকশন, ন্যায্য দাম আর হাসিমুখে সেবা।",
     "hero.cta.shop": "কালেকশন দেখুন", "hero.cta.visit": "দোকানে আসুন", "hero.cta.call": "কল করুন",
@@ -127,7 +134,14 @@ const I18N = {
     "bar.home": "হোম", "bar.shop": "শপ", "bar.call": "কল", "bar.wa": "হোয়াটসঅ্যাপ", "bar.bag": "ব্যাগ",
     "form.name": "আপনার নাম", "form.phone": "ফোন নম্বর", "form.msg": "আপনার বার্তা", "form.send": "হোয়াটসঅ্যাপে পাঠান",
     "form.sent": "হোয়াটসঅ্যাপ খুলছে — বার্তাটি পাঠানোর জন্য প্রস্তুত!",
-    "common.viewProduct": "পণ্য দেখুন", "common.from": "শুরু", "common.sample": "নমুনা"
+    "common.viewProduct": "পণ্য দেখুন", "common.from": "শুরু", "common.sample": "নমুনা",
+    "dev.kicker": "ডিজাইন ও ডেভেলপমেন্ট",
+    "dev.chip1": "ওয়েব ডেভেলপার", "dev.chip2": "শিক্ষার্থী ও শিক্ষক", "dev.chip3": "রক্তদাতা", "dev.chip4": "বিএনসিসি ক্যাডেট",
+    "dev.desc": "সুনামগঞ্জের একজন ওয়েব ডেভেলপার — লোকাল ব্যবসার জন্য দ্রুত, সুন্দর ও কার্যকর ওয়েবসাইট বানাতে ভালোবাসি। এই দোকানের ওয়েবসাইটটিও সেই ধারাবাহিকতারই একটি কাজ।",
+    "dev.quote": "\u201Cমানুষের পাশে দাঁড়ানো, শেখা এবং শেখানো — এই তিনটি জিনিসই আমাকে এগিয়ে নিয়ে যায়।\u201D",
+    "dev.portfolio": "আমার পোর্টফোলিও দেখুন",
+    "dev.order": "ওয়েবসাইট অর্ডার করুন",
+    "dev.meta": "মোবাইল-ফার্স্ট · SEO-রেডি · ১০০/১০০ পারফরম্যান্স-ফোকাস — প্রতিটি RahatVerse বিল্ডের মতোই।"
   }
 };
 let LANG = localStorage.getItem("cfs_lang") || "en";
@@ -494,10 +508,26 @@ let revealObserver = null;
 function observeReveals() {
   if (!revealObserver) {
     revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); revealObserver.unobserve(e.target); } });
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          /* release the stagger delay once revealed so later state changes stay instant */
+          setTimeout(() => { e.target.style.transitionDelay = ""; e.target.style.willChange = "auto"; }, 950);
+          revealObserver.unobserve(e.target);
+        }
+      });
     }, { threshold: 0.08 });
   }
-  document.querySelectorAll(".reveal:not(.in)").forEach(el => revealObserver.observe(el));
+  document.querySelectorAll(".reveal:not(.in)").forEach(el => {
+    /* stagger siblings so grids cascade in smoothly */
+    if (!el.dataset.rd) {
+      const pack = Array.from(el.parentElement.children).filter(c => c.classList && c.classList.contains("reveal"));
+      const idx = Math.max(0, pack.indexOf(el));
+      el.style.transitionDelay = Math.min(idx, 5) * 70 + "ms";
+      el.dataset.rd = "1";
+    }
+    revealObserver.observe(el);
+  });
 }
 
 /* ---------------- SHOP PAGE ---------------- */
